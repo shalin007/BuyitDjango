@@ -1,0 +1,20 @@
+{%extends 'base.html'%}
+{%block content%}
+<div class="row">
+    <div class="col-12 col-md-6">
+        <p>{{product.title}}</p>
+    <p>{{object.description}}</p>
+    <p>{{object.price}}</p>
+        {%if object.image%}
+        <img src="{{object.image.url}}" class="img-fluid" >
+        {%endif%}
+    </div>
+    <div class="col-12 col-md-6">
+        {%include 'products/update-cart.html' with product=object cart=cart%}
+        <a href="{%url 'product_list'%}" class="btn btn-primary" style="margin:5px;">Go back</a>
+
+    </div>
+</div>
+
+
+{%endblock%}

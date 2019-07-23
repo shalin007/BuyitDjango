@@ -1,0 +1,52 @@
+{%extends 'base.html'%}
+{%block content%}
+<div class="row" mb-3>
+    {%if request.GET.q%}
+    <div class="col-12">
+        results for <b>{{request.GET.q}}</b>
+    </div>
+    {%else%}
+    <div class="col-12 col-md-6 mx-auto py-5">
+          {% include 'snippets/search_form.html'%}
+
+    </div>
+    <div class="col-12">
+        <hr>
+    </div>
+    {%endif%}
+</div>
+
+<div class="row">
+    {%for object in product_list%}
+    <div class="col">
+        {{forloop.counter}}
+                        <div class="card" style="width: 18rem;">
+                            {%if object.image%}
+                                <img src="{{object.image.url}}" class="card-img-top" alt="...">
+                            {%endif%}
+                            <div class="card-body ml-auto">
+                                <h5 class="card-title">{{object.title}}</h5>
+                                <p class="card-text">{{object.description}}</p>
+                                <a href="{%url 'product_detail' slug=object.slug%}" class="btn btn-primary">Details</a>
+                            </div>
+                        </div>
+            {%if forloop.counter|divisibleby:3 %}
+    </div></div>
+                <div class="row">
+                    <div class="col-12">
+                         <hr>
+                    </div>
+                </div>
+            {%elif forloop.counter|divisibleby:2%}
+    </div></div>
+                <div class="row">
+                    <div class="col-12">
+                         <hr>
+                    </div>
+                </div>
+            {%else%}
+        </div>
+            {%endif%}
+        {%endfor%}
+</div>
+{%endblock%}

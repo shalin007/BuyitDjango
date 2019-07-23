@@ -1,0 +1,21 @@
+
+<form action="{%if action_url%}{{action_url}}{%else%}{%url 'login'%}{%endif%}"method="post">
+    {%if next_url%}
+    <input type="hidden" name="next" value="{{next_url}}">
+    {%csrf_token%}
+    {{form.as_p}}
+    {%if address_type %}
+    <input type="hidden" name="address_type" value="{{address_type}}">
+    {%endif%}
+    <!--<div class="row">-->
+        <!--<div class="col-md-6">label{{form.address_lin1}}</div>-->
+        <!--<div class="col=md-6">{{form.city}}</div>-->
+    <!--</div>-->
+    <!--<hr>-->
+    <!--<div class="row">-->
+        <!--<div class="col-md-6">{{form.state}}</div>-->
+        <!--<div class="col=md-6">{{form.postal}}</div>-->
+    <!--</div>-->
+    <input type="submit" class="btn btn-primary " value="submit">
+    {%endif%}
+</form>
