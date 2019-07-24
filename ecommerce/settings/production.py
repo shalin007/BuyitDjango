@@ -48,9 +48,10 @@ INSTALLED_APPS = [
     'orders',
     'products',
     'search',
+'crispy_forms',
 
 ]
-
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 AUTH_USER_MODEL='accounts.User'
 
 MAILCHIMP_API_KEY="ce435e86598bdb80477ae67387161e16-us3"

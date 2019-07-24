@@ -4,16 +4,19 @@
 <h2>CART</h2>
 
 {%if not billing_profile%}
+<div class="container">
     <div class="row text-center">
-        <div class="col col-md-6">
-            <button class="btn btn-primary"> Login</button>
+        <div class="col-3">
+            <button type="button" class="btn btn-outline-secondary">Login</button>
             {%include 'cart/snippets/form.html' with form=login_form next_url=request.build_absolute_uri%}
         </div>
-        <div class="col col-md-6">
-            <button class="btn btn-success"> continue as guest</button>
+        <pre>              </pre>
+        <div class="col-4">
+            <button type="button" class="btn btn-outline-secondary">Guest</button>
             {%url 'guest_register' as guest_register_url%}
             {%include 'cart/snippets/form.html' with form=guest_form next_url=request.build_absolute_uri action_url=guest_register_url%}
         </div>
+    </div>
     </div>
 
 
