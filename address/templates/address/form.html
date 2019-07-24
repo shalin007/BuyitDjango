@@ -1,9 +1,15 @@
+{% load crispy_forms_tags %}
+    <script src="https://kit.fontawesome.com/6f33a80a7e.js"></script>
+    <!--jquery-->
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 <form action="{%if action_url%}{{action_url}}{%else%}{%url 'login'%}{%endif%}"method="post">
     {%if next_url%}
     <input type="hidden" name="next" value="{{next_url}}">
     {%csrf_token%}
-    {{form.as_p}}
+    {{ form|crispy }}
     {%if address_type %}
     <input type="hidden" name="address_type" value="{{address_type}}">
     {%endif%}
